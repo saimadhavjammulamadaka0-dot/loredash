@@ -1,6 +1,3 @@
-controller.player1.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
-    Player_main_characte.y += 10
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Player_main_characte = sprites.create(img`
         . . . . . . . . . . . . . . . . 
