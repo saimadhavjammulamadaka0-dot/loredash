@@ -19,8 +19,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, SpriteKind.Projectile)
 })
 let Player_main_characte: Sprite = null
-Player_main_characte = sprites.create(assets.image`myImage`, SpriteKind.Player)
+Player_main_characte = sprites.create(assets.image`myImage`, SpriteKind.Enemy)
 Player_main_characte.setStayInScreen(true)
+Player_main_characte.sayText("Hello I am currently trapped in a cube form help me transform into a human", 5000, false)
 controller.moveSprite(Player_main_characte)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
