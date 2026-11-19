@@ -19,8 +19,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, SpriteKind.Projectile)
 })
 let Player_main_characte: Sprite = null
-game.setDialogTextColor(2)
-game.showLongText("Help I am trapped as a human form press a to help me on my journey", DialogLayout.Bottom)
 Player_main_characte = sprites.create(assets.image`myImage`, SpriteKind.Player)
 Player_main_characte.setStayInScreen(true)
 controller.moveSprite(Player_main_characte)
