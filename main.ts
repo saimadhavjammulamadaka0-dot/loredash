@@ -145,4 +145,4 @@ music.play(music.createSong(hex`000e010408200600001c00010a006400f401640000040000
 Player_main_characte = sprites.create(assets.image`myImage`, SpriteKind.Player)
 Player_main_characte.setPosition(10, 120)
 Player_main_characte.setStayInScreen(true)
-controller.moveSprite(Player_main_characte)
+controller.moveSprite(Player_main_characte, 10, 70)
