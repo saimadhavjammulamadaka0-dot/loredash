@@ -1,32 +1,56 @@
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    sprites.destroy(mySprite, effects.disintegrate, 500)
+    game.reset()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     if (game.ask("Wanna Eat it?")) {
         game.showLongText("Of course you do!", DialogLayout.Bottom)
         game.showLongText("Do you want to die?", DialogLayout.Bottom)
-        sprites.destroy(Candy, effects.trail, 500)
+        sprites.destroy(Candy, effects.none, 0)
         tiles.setCurrentTilemap(tilemap`level2`)
+        game.showLongText("That Candy Was Drugged", DialogLayout.Bottom)
+        pause(5000)
+        game.showLongText("At least your HUNGER bar increased by 10", DialogLayout.Bottom)
+        statusbar2.value += 10
+        pause(5000)
+        game.showLongText("Just Wait A Few Seconds.", DialogLayout.Bottom)
+        pause(5000)
+        game.showLongText("...", DialogLayout.Bottom)
+        pause(5000)
+        game.showLongText("Why are you looking at me like that?", DialogLayout.Bottom)
+        game.showLongText("Oh, I see.", DialogLayout.Bottom)
+        game.showLongText("You want to know who I am.", DialogLayout.Bottom)
+        game.showLongText("Just think of me as the mind in your head.", DialogLayout.Bottom)
+        game.showLongText("...", DialogLayout.Bottom)
+        game.showLongText("That wasn't sufficient was it.", DialogLayout.Bottom)
+        game.showLongText("Well, I can't explain any further. You'll understand.", DialogLayout.Bottom)
+        tiles.setCurrentTilemap(tilemap`level1`)
         mySprite = sprites.create(img`
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
-            f f f f f f f f f f f f f f f f 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             `, SpriteKind.Player)
     } else {
         game.showLongText("Are you dumb?", DialogLayout.Bottom)
+        game.showLongText("*The Thought of Food Depletes your HUNGER bar*", DialogLayout.Bottom)
+        statusbar2.value = 0
     }
 })
 let Candy: Sprite = null
+let statusbar2: StatusBarSprite = null
 let mySprite: Sprite = null
 game.showLongText("Your lost", DialogLayout.Bottom)
 game.showLongText("...", DialogLayout.Bottom)
@@ -59,7 +83,7 @@ scene.cameraFollowSprite(mySprite)
 let statusbar = statusbars.create(20, 4, StatusBarKind.Health)
 statusbar.attachToSprite(mySprite)
 statusbar.value = 100
-let statusbar2 = statusbars.create(20, 4, StatusBarKind.Energy)
+statusbar2 = statusbars.create(20, 4, StatusBarKind.Energy)
 statusbar2.value = 5
 statusbar2.attachToSprite(mySprite, 5, 0)
 Candy = sprites.create(img`
