@@ -1,12 +1,39 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    game.showLongText("Want to eat it?", DialogLayout.Bottom)
+    if (game.ask("Wanna Eat it?")) {
+        game.showLongText("Of course you do!", DialogLayout.Bottom)
+        game.showLongText("Do you want to die?", DialogLayout.Bottom)
+        sprites.destroy(Candy, effects.trail, 500)
+        tiles.setCurrentTilemap(tilemap`level2`)
+        mySprite = sprites.create(img`
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            f f f f f f f f f f f f f f f f 
+            `, SpriteKind.Player)
+    } else {
+        game.showLongText("Are you dumb?", DialogLayout.Bottom)
+    }
 })
+let Candy: Sprite = null
+let mySprite: Sprite = null
 game.showLongText("Your lost", DialogLayout.Bottom)
 game.showLongText("...", DialogLayout.Bottom)
 game.showLongText("Hungry, So Hungry", DialogLayout.Bottom)
 game.showLongText("If only you could go back home and take a refreshing bath.", DialogLayout.Bottom)
 game.showLongText("Infront of you is candy. That will do.", DialogLayout.Bottom)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -35,7 +62,7 @@ statusbar.value = 100
 let statusbar2 = statusbars.create(20, 4, StatusBarKind.Energy)
 statusbar2.value = 5
 statusbar2.attachToSprite(mySprite, 5, 0)
-let Candy = sprites.create(img`
+Candy = sprites.create(img`
     . . . . . . . . . . . 6 6 6 6 6 
     . . . . . . . . . 6 6 7 7 7 7 8 
     . . . . . . 8 8 8 7 7 8 8 6 8 8 
